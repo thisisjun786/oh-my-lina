@@ -4,7 +4,7 @@ Start with the [manifesto](MANIFESTO.md). Bug reports, proposals, and documentat
 
 ## Language
 
-Write issue and pull request titles and bodies in English. Keep quoted source text, logs, and code unchanged.
+Write issue and pull request titles and bodies in English, regardless of the language used to request the work. Keep quoted source text, logs, and code unchanged.
 
 ## Before you start
 
