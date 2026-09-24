@@ -2,6 +2,10 @@
 
 Start with the [manifesto](MANIFESTO.md). Bug reports, proposals, and documentation fixes are welcome.
 
+## Language
+
+Write issue and pull request titles and bodies in English. Keep quoted source text, logs, and code unchanged.
+
 ## Before you start
 
 Search existing issues and PRs. For a feature or architectural change, open a [proposal](https://github.com/thisisjun786/lina/issues/new?template=proposal.yml) and agree on scope with the owner before implementation. A blank issue is fine if the form does not fit. Small fixes and documentation improvements can go straight to a PR.

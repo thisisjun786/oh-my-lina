@@ -4,6 +4,8 @@ body:
   - type: markdown
     attributes:
       value: |
+        Write the title and body in English.
+
         Search existing issues first. For sensitive findings, follow [Security](https://github.com/thisisjun786/lina/blob/main/SECURITY.md) instead of posting details here.
   - type: textarea
     id: observed
