@@ -2,6 +2,8 @@
 
 Use [GitHub issues](https://github.com/thisisjun786/lina/issues/new/choose) for bugs, proposals, and questions. A blank issue is fine if the forms do not fit.
 
+Follow the [language policy](../../CONTRIBUTING.md#language) for issue titles and bodies.
+
 ## Reporting
 
 - **Bug:** describe actual and expected behavior, a minimal reproduction, and the relevant commit or version. If reproduction is unreliable, say so. Include only sanitized evidence; see [Security](../../SECURITY.md).
