@@ -4,6 +4,8 @@ Use a short-lived branch from `dev` and target `dev` with one coherent change. K
 
 `main` identifies the released source and does not accept development or promotion PRs. The [release workflow](releases.md) advances it to a verified release commit.
 
+Follow the [language policy](../../CONTRIBUTING.md#language) for PR titles and bodies.
+
 ## Describe the change
 
 The [PR template](../../.github/pull_request_template.md) asks for:

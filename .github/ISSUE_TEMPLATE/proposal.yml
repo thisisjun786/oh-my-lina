@@ -1,6 +1,9 @@
 name: Feature or design proposal
 description: Describe a problem worth solving and the outcome you want.
 body:
+  - type: markdown
+    attributes:
+      value: Write the title and body in English.
   - type: textarea
     id: problem
     attributes:
