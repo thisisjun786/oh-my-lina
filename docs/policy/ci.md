@@ -40,6 +40,17 @@ Deleted paths and both sides of a rename participate. A `.md` suffix alone does 
 
 The scripts use Node 20 or newer and built-in modules. Release fixtures also use Bash, Git, and jq. Action versions and the actionlint checksum live in the workflow.
 
+## Timing and budget
+
+| mode | baseline run | event | cache | wall s | runner s | wall bound s | runner bound s |
+| --- | --- | --- | --- | ---: | ---: | ---: | ---: |
+| full | 36239758274 | push | miss | 26 | 20 | 50 | 40 |
+| docs | 36240717925 | pull_request | not used (automation skipped) | 23 | 13 | 40 | 30 |
+
+The bound is U(x) = 10 * ceil(max(1.5x, x + 15) / 10) seconds, applied to wall and runner seconds; wall is measured from run creation to the last non-skipped job completion of attempt 1, and runner is the sum of non-skipped job durations.
+
+A run above its bound is investigated before the bound is changed; a bound changes only by PR with the new measurement.
+
 ## Passing and failing
 
 [ci-gate.mjs](../../.github/scripts/ci-gate.mjs) always runs after the selected jobs. Selection must succeed, every selected job must report `success`, and an unselected job must report `skipped`. Missing, failed, cancelled, malformed, or unexpectedly skipped results fail the gate. Do not use workflow-level path filters that prevent the required result from appearing.
