@@ -14,7 +14,7 @@ Talk about your day. Think aloud. Bring a problem. LINA carries your shared hist
 
 ## Contribute
 
-Start with the [contribution guide](CONTRIBUTING.md), or [open an issue](https://github.com/thisisjun786/lina/issues/new/choose) to report a problem or discuss an idea.
+Start with the [contribution guide](CONTRIBUTING.md), or [open an issue](https://github.com/thisisjun786/oh-my-lina/issues/new/choose) to report a problem or discuss an idea.
 
 For sensitive reports, see [Security](SECURITY.md).
 

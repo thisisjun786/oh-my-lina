@@ -2,7 +2,7 @@
 
 ## Report a vulnerability
 
-Do not disclose vulnerabilities or sensitive evidence in a public issue or PR. If private vulnerability reporting is available in this repository's Security tab, use it. Otherwise, open a [private contact request](https://github.com/thisisjun786/lina/issues/new?title=Private%20contact%20request) asking the owner for a private route. That request is public: include no vulnerability details, credentials, or personal data.
+Do not disclose vulnerabilities or sensitive evidence in a public issue or PR. If private vulnerability reporting is available in this repository's Security tab, use it. Otherwise, open a [private contact request](https://github.com/thisisjun786/oh-my-lina/issues/new?title=Private%20contact%20request) asking the owner for a private route. That request is public: include no vulnerability details, credentials, or personal data.
 
 A useful private report includes the affected commit or version, impact, and a minimal reproduction. Use synthetic data and redact credentials, personal conversations, memory/persona data, user files, and operational logs.
 
