@@ -1,6 +1,6 @@
 # Issues
 
-Use [GitHub issues](https://github.com/thisisjun786/lina/issues/new/choose) for bugs, proposals, and questions. A blank issue is fine if the forms do not fit.
+Use [GitHub issues](https://github.com/thisisjun786/oh-my-lina/issues/new/choose) for bugs, proposals, and questions. A blank issue is fine if the forms do not fit.
 
 Follow the [language policy](../../CONTRIBUTING.md#language) for issue titles and bodies.
 

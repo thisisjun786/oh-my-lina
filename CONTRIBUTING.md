@@ -8,9 +8,9 @@ Write issue and pull request titles and bodies in English, regardless of the lan
 
 ## Before you start
 
-Search existing issues and PRs. For a feature or architectural change, open a [proposal](https://github.com/thisisjun786/lina/issues/new?template=proposal.yml) and agree on scope with the owner before implementation. A blank issue is fine if the form does not fit. Small fixes and documentation improvements can go straight to a PR.
+Search existing issues and PRs. For a feature or architectural change, open a [proposal](https://github.com/thisisjun786/oh-my-lina/issues/new?template=proposal.yml) and agree on scope with the owner before implementation. A blank issue is fine if the form does not fit. Small fixes and documentation improvements can go straight to a PR.
 
-Report reproducible problems with the [bug form](https://github.com/thisisjun786/lina/issues/new?template=bug.yml). For sensitive findings, follow [Security](SECURITY.md).
+Report reproducible problems with the [bug form](https://github.com/thisisjun786/oh-my-lina/issues/new?template=bug.yml). For sensitive findings, follow [Security](SECURITY.md).
 
 ## Make a change
 
