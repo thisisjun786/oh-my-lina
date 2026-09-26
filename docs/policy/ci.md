@@ -26,7 +26,7 @@ The executable path map is [ci-scope.mjs](../../.github/scripts/ci-scope.mjs). T
 
 | Change | Selection |
 | --- | --- |
-| Only explicitly listed root/PR documents or Markdown under `docs/policy/` | `docs`; no automation installation or test run. |
+| Only explicitly listed root/PR documents or Markdown directly under `docs/policy/` or `docs/design/` | `docs`; no automation installation or test run. |
 | Workflow, issue-template, verification-script, or shared repository configuration | Both checks. |
 | Empty or unavailable diff | Both checks; never assume documentation-only. |
 | An unmapped path in the changed paths or candidate tree | Both checks, but `foundation` refuses to pass until its verification is registered. |
@@ -36,7 +36,7 @@ Deleted paths and both sides of a rename participate. A `.md` suffix alone does 
 ## Current checks
 
 - **docs:** validate local file targets in all tracked Markdown and `LICENSE`, including links from unchanged documents to deleted targets. This does not validate external URLs, heading anchors, or the meaning of prose.
-- **automation:** check JavaScript syntax, run the Node behavioral suite, and validate Actions syntax and shell blocks with the pinned actionlint release. Release tests execute the workflow's actual shell steps against disposable Git repositories and explicit GitHub-response fixtures; they never publish real releases.
+- **automation:** check JavaScript syntax, run the Node behavioral suite, and validate Actions syntax and shell blocks with the pinned actionlint release. Release tests execute the workflow's actual shell steps against disposable Git repositories and explicit GitHub-response fixtures; they never publish real releases. The pinned actionlint archive is cached by version and checksum; every run re-verifies the checksum before extraction.
 
 The scripts use Node 20 or newer and built-in modules. Release fixtures also use Bash, Git, and jq. Action versions and the actionlint checksum live in the workflow.
 

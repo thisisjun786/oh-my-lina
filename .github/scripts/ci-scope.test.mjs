@@ -45,6 +45,72 @@ test('a real document-only Git diff excludes automation on PR and dev push', t =
   assert.equal(r.classify(head, { event: 'workflow_dispatch' }).automation, true);
 });
 
+test('a design document added directly under docs/design excludes automation on PR and dev push', t => {
+  const r = repository(t);
+  mkdirSync(join(r.cwd, 'docs/design'), { recursive: true });
+  writeFileSync(join(r.cwd, 'docs/design/example.md'), '# Design\n');
+  const head = r.commit();
+  for (const event of ['pull_request', 'push']) {
+    const scope = r.classify(head, { event });
+    assert.equal(scope.mode, 'docs');
+    assert.equal(scope.docs, true);
+    assert.equal(scope.automation, false);
+    assert.deepEqual(scope.unmapped, []);
+    assert.deepEqual(scope.changed, ['docs/design/example.md']);
+  }
+});
+
+test('modifying, renaming, and deleting a design document stay documentation-only', t => {
+  const r = repository(t);
+  mkdirSync(join(r.cwd, 'docs/design'), { recursive: true });
+  writeFileSync(join(r.cwd, 'docs/design/example.md'), '# Design\n');
+  const added = r.commit();
+  writeFileSync(join(r.cwd, 'docs/design/example.md'), '# Revised design\n');
+  const modified = r.commit();
+  renameSync(join(r.cwd, 'docs/design/example.md'), join(r.cwd, 'docs/design/renamed.md'));
+  const renamed = r.commit();
+  rmSync(join(r.cwd, 'docs/design/renamed.md'));
+  const deleted = r.commit();
+  const steps = [
+    [added, modified, ['docs/design/example.md']],
+    [modified, renamed, ['docs/design/example.md', 'docs/design/renamed.md']],
+    [renamed, deleted, ['docs/design/renamed.md']],
+  ];
+  for (const [previousHead, head, changed] of steps) {
+    for (const event of ['pull_request', 'push']) {
+      const scope = r.classify(head, { base: previousHead, event });
+      assert.equal(scope.mode, 'docs');
+      assert.equal(scope.automation, false);
+      assert.deepEqual(scope.unmapped, []);
+      assert.deepEqual(scope.changed, changed);
+    }
+  }
+});
+
+for (const path of ['docs/design/example.mjs', 'docs/design/nested/example.md', 'docs/designer/example.md', 'docs/design/example.MD']) {
+  test(`${path} is not a registered design document`, t => {
+    const r = repository(t);
+    mkdirSync(join(r.cwd, path, '..'), { recursive: true });
+    writeFileSync(join(r.cwd, path), 'fixture\n');
+    const scope = r.classify(r.commit());
+    assert.equal(scope.mode, 'full');
+    assert.equal(scope.reason, 'unmapped-paths');
+    assert.deepEqual(scope.unmapped, [path]);
+  });
+}
+
+test('a design document with a workflow change selects both checks', t => {
+  const r = repository(t);
+  mkdirSync(join(r.cwd, 'docs/design'), { recursive: true });
+  mkdirSync(join(r.cwd, '.github/workflows'), { recursive: true });
+  writeFileSync(join(r.cwd, 'docs/design/example.md'), '# Design\n');
+  writeFileSync(join(r.cwd, '.github/workflows/ci.yml'), 'name: fixture\n');
+  const scope = r.classify(r.commit());
+  assert.equal(scope.docs, true);
+  assert.equal(scope.automation, true);
+  assert.deepEqual(scope.unmapped, []);
+});
+
 test('workflow changes and shared configuration select both checks', t => {
   const r = repository(t);
   mkdirSync(join(r.cwd, '.github/workflows'), { recursive: true });

@@ -10,7 +10,7 @@ const documents = new Set([
 const configuration = new Set(['.editorconfig', '.gitattributes', '.gitignore']);
 
 function kind(path) {
-  if (documents.has(path) || /^docs\/policy\/[^/]+\.md$/.test(path)) return 'docs';
+  if (documents.has(path) || /^docs\/(?:policy|design)\/[^/]+\.md$/.test(path)) return 'docs';
   if (configuration.has(path)
     || /^\.github\/(workflows|ISSUE_TEMPLATE)\/[^/]+\.ya?ml$/.test(path)
     || /^\.github\/scripts\/[^/]+\.(mjs|sh)$/.test(path)) return 'automation';
