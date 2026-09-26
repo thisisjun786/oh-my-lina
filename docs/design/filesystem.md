@@ -1,5 +1,7 @@
 # Common filesystem
 
+<!-- CI verification -->
+
 This contract fixes the one Linux filesystem layout that every LINA install uses, who writes each part of it, how a file keeps its identity when it moves or changes, where derived data lives, what a backup generation contains, and how material enters or leaves the library. It is normative: implementations must follow it, and any change to it goes through a pull request against this file.
 
 Finishing this document does not mean any path is implemented or accepted. Runtime proof belongs to the implementation issues that consume this contract, and the product boundaries it builds on are defined in [product-families.md](product-families.md).
