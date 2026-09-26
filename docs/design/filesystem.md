@@ -33,7 +33,7 @@ There is one state root per install, written here as `<state-root>`. Its absolut
 | Canon (SQLite: metadata and derived indexes) | `identities/<identity-id>/canon/` | OML | Personal canon generation | Conversation |
 | Import staging | `identities/<identity-id>/staging/import/` | OML, on an approved import | Not backed up | Materials |
 | Export staging | `identities/<identity-id>/staging/export/` | OML, on an approved export | Not backed up | Materials |
-| Installation state | `system/` | The install (OML install or LINA OS) | OS root snapshot | Delegation |
+| Installation state | `system/` | The install (OML install or LINA OS) and each component's event writer | OS root snapshot | Delegation |
 | Backup generations | `backups/<identity-id>/<generation-id>/` | The backup procedure | Is the unit | Conversation |
 
 Rules for the layout:
@@ -41,7 +41,7 @@ Rules for the layout:
 - Only OML writes canon and materials. LINA APP, Node and any generic file tool never write there.
 - Backups live at `backups/<identity-id>/<generation-id>/`, beside the identity tree, never inside it. A generation must not be captured by the tree it backs up.
 - Configuration and secrets have their own writers. They never live under `materials/` or `canon/`, and their locations are owned by the OML install.
-- Human originals outside the state root stay human-owned. They enter the library only through an approved import, and LINA never edits them in place.
+- Human originals outside the state root stay human-owned and are not library material. They enter the library only through an approved import, and the library never edits them in place. Work on such files happens only as grant-scoped work under [main-authority.md](main-authority.md).
 - Renaming any directory in this table is a contract change. It's made by a pull request against this file, not by an implementation.
 
 ## Asset identity
@@ -53,7 +53,7 @@ Every piece of material carries an asset id. The asset id, the content hash and 
 - Two files with identical content get two asset ids. A matching hash never merges them, and a matching name or path never merges them either.
 - After a move or a rename the material is still found by its asset id, so collections and relations in LINA APP don't break.
 
-A reference to a file on a Node device carries the node id, the asset id, the observed path, the revision, the content hash and the observation time. Such a reference is only valid under a current grant from the main OML; a stale grant makes the reference unusable until it's observed again. Name, path or identical content alone never prove that two files on different devices are the same file.
+A reference to a file on a Node device carries the provenance fields of [main-authority.md](main-authority.md): the asset id as the artifact id, the task id, the node id, the observed path, the revision and content hash, and the observation time. Such a reference is only valid under a current grant from the main OML; a stale grant makes the reference unusable until it's observed again. Name, path or identical content alone never prove that two files on different devices are the same file.
 
 ## Originals and derived data
 
