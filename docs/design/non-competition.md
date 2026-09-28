@@ -86,7 +86,7 @@ Each measured cell has one record, and it holds:
 - the host OS and version, and the install mode
 - the session: OS user, GUI session, profile, and the grant the work ran under
 - the hardware: CPU, memory, and any relevant device
-- the versions of every LINA artifact involved: OML, Node, LINA APP and LINA OS
+- the versions of every LINA artifact involved: LINA Core, Node, LINA APP and LINA OS
 - the workload: what the person did, what LINA did, and what LIFE world activity ran in the background
 - the traces: input, focus, clipboard and file access traces for the whole session, tied to the task and grant ids
 - the declared bounds and the measured deltas against them

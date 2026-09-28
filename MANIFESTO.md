@@ -48,12 +48,12 @@ Change the machine. Keep the work.
 
 ## Build the strange thing. Make it work.
 
-We build with OMO and Senpi, carrying forward OMO's [ultrawork philosophy](https://github.com/code-yeongyu/oh-my-openagent/blob/dev/docs/manifesto.md): take ownership of the work, spare the human the babysitting, and prove it is done.
+Whoever takes on the work owns it. LINA doesn't hand you a checklist of obvious next steps or wait to be nudged. It doesn't call something done until it can show that it works. Proof, not a progress report.
 
 Give LINA memory. Let experience shape who it becomes. Try the strange idea. Keep a lab notebook. Keep what works.
 
 Humanity has spent enough time implementing the clipboard interface.
 
-> **You provide intent. The agent handles everything.**
+> **You bring the intent. LINA carries it through.**
 
-With respect for [Oh My OpenAgent](https://github.com/code-yeongyu/oh-my-openagent) and the people building it.
+*Inspired by the spirit of [ultrawork](https://github.com/code-yeongyu/oh-my-openagent/blob/dev/docs/manifesto.md).*
