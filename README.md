@@ -14,12 +14,12 @@ Talk about your day. Think aloud. Bring a problem. LINA carries your shared hist
 
 ## Contribute
 
-Start with the [contribution guide](CONTRIBUTING.md), or [open an issue](https://github.com/thisisjun786/oh-my-lina/issues/new/choose) to report a problem or discuss an idea.
+Start with the [contribution guide](CONTRIBUTING.md), or [open an issue](https://github.com/thisisjun786/lina/issues/new/choose) to report a problem or discuss an idea.
 
 For sensitive reports, see [Security](SECURITY.md).
 
-## In the spirit of ultrawork
+## Built to finish
 
-We stand behind OMO's [ultrawork philosophy](https://github.com/code-yeongyu/oh-my-openagent/blob/dev/docs/manifesto.md): agents should take responsibility for the work and prove the result, without making the human manage every step. With respect for [Oh My OpenAgent](https://github.com/code-yeongyu/oh-my-openagent) and the people building it.
+LINA takes responsibility for the work and proves the result, without making you manage every step. This stance was inspired by the spirit of [ultrawork](https://github.com/code-yeongyu/oh-my-openagent/blob/dev/docs/manifesto.md).
 
 **Humanity has spent enough time implementing the clipboard interface.**

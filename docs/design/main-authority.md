@@ -6,7 +6,7 @@ It builds on the product responsibilities in [product-families.md](product-famil
 
 ## Terms
 
-**Server host.** The one machine that runs the main OML and confirms the canonical identity, memory and work intent of a LINA. "Main" in this document and "server host" in user-facing documents name the same thing. There is exactly one per LINA.
+**Server host.** The one machine that runs the main LINA Core and confirms the canonical identity, memory and work intent of a LINA. "Main" in this document and "server host" in user-facing documents name the same thing. There is exactly one per LINA.
 
 **Epoch.** A persistent generation owned by the main. Every start of the main creates a new epoch and stores it durably before anything else happens. Grants, commands and receipts carry the epoch they belong to.
 
@@ -36,7 +36,7 @@ It builds on the product responsibilities in [product-families.md](product-famil
 
 ## Invariants
 
-- There is one canonical writer: the main OML on the server host. Identity, memory and work intent are confirmed there and nowhere else.
+- There is one canonical writer: the main LINA Core on the server host. Identity, memory and work intent are confirmed there and nowhere else.
 - A write to canonical state that arrives from any other device is rejected. LINA APP and Node report and reflect; they never confirm canonical state.
 - Two devices must never be the main at the same time. There is no path by which a second device becomes the main automatically.
 - There is no automatic replacement main. When the main stops, every dependent LINA function stops with it until the same main comes back. This does not mean the user's computer shuts down.
@@ -140,6 +140,6 @@ The following items are recognized but not settled here. Each names the place wh
 
 - Grant expiry values, the heartbeat interval and the maximum stop latency: set by measurement during Node implementation acceptance.
 - Clocking of the expiry deadline across Node sleep, resume and clock changes: set during Node implementation acceptance.
-- The wire format of grants, commands, receipts and reconciliation messages: OML host contract, set during implementation acceptance.
+- The wire format of grants, commands, receipts and reconciliation messages: LINA Core host contract, set during implementation acceptance.
 - Supervision of several tasks on one Node, and parent and child tasks: set during implementation acceptance of delegated work.
 - Registration, enrollment and withdrawal of a Node on each supported OS: set during Node implementation acceptance.

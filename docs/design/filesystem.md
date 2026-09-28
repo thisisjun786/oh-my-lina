@@ -8,7 +8,7 @@ Finishing this document does not mean any path is implemented or accepted. Runti
 
 Every LINA install runs on a Linux filesystem, whether LINA is installed as the device operating system or inside a VM. All installs use the same layout and the same path rules. The installation mode changes where the layout is mounted, never its shape.
 
-OML's material management, LINA APP's file and media space and LINA OS's storage placement all sit on this one layout. It's the reference the system uses to find material, not a tree for a person to browse.
+LINA Core's material management, LINA APP's file and media space and LINA OS's storage placement all sit on this one layout. It's the reference the system uses to find material, not a tree for a person to browse.
 
 This contract covers:
 
@@ -23,24 +23,24 @@ This contract does not fix the absolute location of the state root, service name
 
 ## State root and layout
 
-There is one state root per install, written here as `<state-root>`. Its absolute location isn't fixed by this contract. The OML install owns it for a general Linux install; the install-mode design owns it for device-OS and VM installs. Every path below is relative to `<state-root>`, and the relative layout is identical in every mode.
+There is one state root per install, written here as `<state-root>`. Its absolute location isn't fixed by this contract. The LINA Core install owns it for a general Linux install; the install-mode design owns it for device-OS and VM installs. Every path below is relative to `<state-root>`, and the relative layout is identical in every mode.
 
 | Logical area | v0 relative path | Writer | Backup unit | First consumer |
 | --- | --- | --- | --- | --- |
-| User materials (approved imported copies) | `identities/<identity-id>/materials/user/<asset-id>/<revision>/` | OML | Personal canon generation | Materials |
-| LINA materials (LINA-managed outputs) | `identities/<identity-id>/materials/lina/<asset-id>/<revision>/` | OML | Personal canon generation | Conversation, delegation |
-| Derived artifacts (regenerable) | `identities/<identity-id>/derived/<asset-id>/<revision>/` | OML | Personal canon generation, recorded by source revision | Materials |
-| Canon (SQLite: metadata and derived indexes) | `identities/<identity-id>/canon/` | OML | Personal canon generation | Conversation |
-| Import staging | `identities/<identity-id>/staging/import/` | OML, on an approved import | Not backed up | Materials |
-| Export staging | `identities/<identity-id>/staging/export/` | OML, on an approved export | Not backed up | Materials |
-| Installation state | `system/` | The install (OML install or LINA OS) and each component's event writer | OS root snapshot | Delegation |
+| User materials (approved imported copies) | `identities/<identity-id>/materials/user/<asset-id>/<revision>/` | LINA Core | Personal canon generation | Materials |
+| LINA materials (LINA-managed outputs) | `identities/<identity-id>/materials/lina/<asset-id>/<revision>/` | LINA Core | Personal canon generation | Conversation, delegation |
+| Derived artifacts (regenerable) | `identities/<identity-id>/derived/<asset-id>/<revision>/` | LINA Core | Personal canon generation, recorded by source revision | Materials |
+| Canon (SQLite: metadata and derived indexes) | `identities/<identity-id>/canon/` | LINA Core | Personal canon generation | Conversation |
+| Import staging | `identities/<identity-id>/staging/import/` | LINA Core, on an approved import | Not backed up | Materials |
+| Export staging | `identities/<identity-id>/staging/export/` | LINA Core, on an approved export | Not backed up | Materials |
+| Installation state | `system/` | The install (LINA Core install or LINA OS) and each component's event writer | OS root snapshot | Delegation |
 | Backup generations | `backups/<identity-id>/<generation-id>/` | The backup procedure | Is the unit | Conversation |
 
 Rules for the layout:
 
-- Only OML writes canon and materials. LINA APP, Node and any generic file tool never write there.
+- Only LINA Core writes canon and materials. LINA APP, Node and any generic file tool never write there.
 - Backups live at `backups/<identity-id>/<generation-id>/`, beside the identity tree, never inside it. A generation must not be captured by the tree it backs up.
-- Configuration and secrets have their own writers. They never live under `materials/` or `canon/`, and their locations are owned by the OML install.
+- Configuration and secrets have their own writers. They never live under `materials/` or `canon/`, and their locations are owned by the LINA Core install.
 - Human originals outside the state root stay human-owned and are not library material. They enter the library only through an approved import, and the library never edits them in place. Work on such files happens only as grant-scoped work under [main-authority.md](main-authority.md).
 - Renaming any directory in this table is a contract change. It's made by a pull request against this file, not by an implementation.
 
@@ -53,7 +53,7 @@ Every piece of material carries an asset id. The asset id, the content hash and 
 - Two files with identical content get two asset ids. A matching hash never merges them, and a matching name or path never merges them either.
 - After a move or a rename the material is still found by its asset id, so collections and relations in LINA APP don't break.
 
-A reference to a file on a Node device carries the provenance fields of [main-authority.md](main-authority.md): the asset id as the artifact id, the task id, the node id, the observed path, the revision and content hash, and the observation time. Such a reference is only valid under a current grant from the main OML; a stale grant makes the reference unusable until it's observed again. Name, path or identical content alone never prove that two files on different devices are the same file.
+A reference to a file on a Node device carries the provenance fields of [main-authority.md](main-authority.md): the asset id as the artifact id, the task id, the node id, the observed path, the revision and content hash, and the observation time. Such a reference is only valid under a current grant from the main LINA Core; a stale grant makes the reference unusable until it's observed again. Name, path or identical content alone never prove that two files on different devices are the same file.
 
 ## Originals and derived data
 
@@ -107,7 +107,7 @@ The file list in LINA APP is not a writer. Ownership is kept distinct for human 
 
 ## Deferred
 
-- The absolute state root, service names, ports and sockets are owned by the OML install paths contract.
+- The absolute state root, service names, ports and sockets are owned by the LINA Core install paths contract.
 - The roots for device-OS and VM installs, and VM sandbox boundaries such as shared folders, are owned by the install-mode design.
 - Sync between installs, beyond the rule that it moves whole generations, is set during implementation acceptance.
 - The multimodal processing policy and the derived-data rebuild policy are set during implementation acceptance.

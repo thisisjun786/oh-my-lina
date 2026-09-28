@@ -22,7 +22,7 @@ New runs cancel obsolete runs for the same PR or branch. Each job has a bounded 
 
 ## Change classification
 
-The executable path map is [ci-scope.mjs](../../.github/scripts/ci-scope.mjs). This follows [OMO's change-classification approach](https://github.com/code-yeongyu/oh-my-openagent/blob/dev/script/ci-fast-path.mjs), with LINA's own paths and checks.
+The executable path map is [ci-scope.mjs](../../.github/scripts/ci-scope.mjs).
 
 | Change | Selection |
 | --- | --- |
